@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style>
+        .container{
+            background-color: red;
+            color:blue;
+            font-size: larger;
+            padding: 15px;
+            margin:100px;
+        }
+    </style>
+    <script>
+        let timeout;
+        function debouncePopulateDiv(){
+            clearTimeout(timeout);
+            timeout = setTimeout(()=>{
+                populateDiv();
+            },100);
+            // clearTimeout(timeout);
+        }
+        function populateDiv(){
+            const a = Number(document.getElementById('firstNumber').value);
+            const b = Number(document.getElementById('secondNumber').value);
+            // const ans = document.getElementById('finalSum');
+            // fetch('https://localhost:3000/sum?a=' + a + '&b=' + b).then((res)=> {
+            //     console.log(res);
+            //     res.text().then((ans)=>document.getElementById('finalSum').innerText = ans);
+            // });
+            // document.getElementById('finalSum').innerText = a+b;
+            // const l = document.getElementsByClassName('inputs');
+            // console.log(l);
+            // console.log(document.getElementById('finalSum'))
+        }
+        async function populateDiv2(){
+            const a = Number(document.getElementById('firstNumber').value);
+            const b = Number(document.getElementById('secondNumber').value);
+            const response = await fetch('https://localhost:3000/sum?a=' + a + '&b=' + b);
+            const ans = await response.text();
+            document.getElementById('finalSum').innerHTML = ans;
+        }
+    </script>
+</head>
+<body>
+    <input class="inputs" oninput="populateDiv2()" id="firstNumber" type="text" placeholder="First number">
+    </br>
+    <input class="inputs" oninput="populateDiv2()" id="secondNumber" type="text" placeholder="Second number">
+    </br>
+    <button onclick="populateDiv()">Calculate SUM</button>
+    <div id="finalSum"></div>
+<!--    <div class="container">-->
+<!--        Hi there-->
+<!--    </div>-->
+<!--    <div class="container">-->
+<!--        Hi there 2-->
+<!--    </div>-->
+</body>
+</html>

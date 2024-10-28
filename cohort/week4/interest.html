@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="view-port" content="width=device-width initial-scale=1.0">
+        <title>Interest</title>
+        <script>
+            function populateDiv(){
+                const p = document.getElementById('principal').value;
+                const r = document.getElementById('rate').value;
+                const t = document.getElementById('time').value;
+                const ans = parseInt(p) * parseInt(r) * parseInt(t) / 100;
+                document.getElementById('solution').innertText = ans.toString();
+            }
+        </script>
+    </head>
+    <body>
+        <input id="principal" type="text" placeholder="Principal">
+        <input id="rate" type="text" placeholder="Rate">
+        <input id="time" type="text" placeholder="Time">
+        <button onclick="populateDiv()">Calculate</button>
+        <div id="solution"></div>
+    </body>
+</html>

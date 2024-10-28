@@ -2,5 +2,13 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week10/week-13-prisma" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week10/week-13-sql" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week12/week-8-repo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week5/newYear-Todoapp/backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week5/newYear-Todoapp/frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week7/7.4" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cohort/week7/StateManage/week-7" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/week-2/01-async-js/easy/counter-project" vcs="Git" />
   </component>
 </project>

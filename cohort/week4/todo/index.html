@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="view-port" content="width=device-width initial-scale=1.0">
+        <title>To DO</title>
+    </head>
+    <body>
+        <div>
+            <input id="title" type="text" placeholder="title"></br>
+            <input id="description" type="text" placeholder="description"></br>
+<!--            <button onclick="addToDo()">Add to do</button>-->
+            <div id="container"></div>
+        </div>
+        <script>
+            // let globalId = 1;
+            // function markAsDone(id){
+            //     const parent = document.getElementById(id);
+            //     parent.children[2].innerHTML = 'Done!';
+            // }
+            function createChild(title,description,id){
+                const child = document.createElement('div');
+                const firstGrandChild = document.createElement('div');
+                firstGrandChild.innerHTML = title;
+                const secondGrandChild = document.createElement('div');
+                secondGrandChild.innerHTML = description;
+                const thirdGrandChild = document.createElement('button');
+                thirdGrandChild.innerHTML = 'Mark as Done!';
+                thirdGrandChild.setAttribute('onclick',`markAsDone(${id})`);
+                child.appendChild(firstGrandChild);
+                child.appendChild(secondGrandChild);
+                child.appendChild(thirdGrandChild);
+                child.setAttribute('id',id);
+                return child;
+            }
+            // function addToDo(){
+            //     const title = document.getElementById('title').value;
+            //     const description = document.getElementById('description').value;
+            //     // const originalHTML = document.getElementById('container').innerHTML;
+            //     // document.getElementById('container').innerHTML = originalHTML + `<div>
+            //     //     <div>${title}</div>
+            //     //     <div>${description}</div>
+            //     //     <button>Mark as Done</button>
+            //     //     </div>`;
+            //     console.log(title,description);
+            //     // const childDiv = document.createElement('div');
+            //     // childDiv.innerHTML = title;
+            //     // document.getElementById('container').appendChild(childDiv);
+            //     const parent = document.getElementById('container');
+            //     parent.appendChild(createChild(title,description,globalId++))
+            // }
+            function updateDomAccToState(state){
+                const parent = document.getElementById('container');
+                parent.innerHTML = '';
+                for(let i = 0;i < state.length;i++){
+                    const child = createChild(state[i].title,state[i].description,state[i].id);
+                    parent.appendChild(child);
+                }
+            }
+            updateDomAccToState([{
+                title:"reading",
+                description:'read as much as possible',
+                id:12
+            },{
+                title:"riding",
+                description:'ride the bicycle',
+                id:23
+            },{
+                title:"drink",
+                description:'Stay Hydrated',
+                id:34
+            }]);
+            window.setInterval(async ()=>{
+                const res = await fetch('https://www.sum-server.100xdevs.com/todos');
+                const json = await res.json();
+                updateDomAccToState(json.todos);
+            })
+        </script>
+    </body>
+</html>

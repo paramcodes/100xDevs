@@ -1,0 +1,10 @@
+function maxValue(array) {
+    var max = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] > max)
+            max = array[i];
+    }
+    return max;
+}
+var nums = [3, 4, 3, 53, 2, 342];
+console.log(maxValue(nums));
